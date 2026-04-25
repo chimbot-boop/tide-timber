@@ -1,19 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  *:focus-visible {
-    outline: 2px solid #C45A2A;
-    outline-offset: 2px;
-  }
+@theme {
+  --color-bg: #f5f0e8;
+  --color-text: #1a1a1a;
+  --color-primary: #1a1a1a;
+  --color-secondary: #e8e0d0;
+  --color-accent: #7a2334;
+  --color-accent-hover: #5e1a28;
+  --color-muted: #6b6560;
+  --color-surface: #faf7f2;
+  --color-rule: #d8cdbc;
+  --color-paper-shadow: #cbbda9;
 
-  html {
-    scroll-behavior: smooth;
-  }
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-source-sans);
+  --font-mono: var(--font-source-code);
+}
 
-  body {
-    background-color: #FDFAF4;
-    color: #4A4A52;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
 }

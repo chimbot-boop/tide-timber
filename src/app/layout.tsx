@@ -1,26 +1,32 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, DM_Sans } from "next/font/google";
+import { Playfair_Display, Source_Sans_3, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
-import { Nav } from "@/components/Nav";
 
-const dmSerifDisplay = DM_Serif_Display({
-  weight: "400",
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-serif",
+  weight: ["400", "600", "700"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
-const dmSans = DM_Sans({
-  weight: ["300", "400", "500", "600", "700"],
+const sourceSans = Source_Sans_3({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-source-sans",
+  display: "swap",
+});
+
+const sourceCode = Source_Code_Pro({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-source-code",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Tide & Timber — Surf & Paddleboard School",
+  title: "Design Contract Smoke Test | York Bookbinder",
   description:
-    "Premium surf and paddleboard lessons on the UK's south-west coast. Small groups, expert instructors, unforgettable sessions.",
+    "A compact letterpress-inspired site for a fictional independent York bookbinder.",
 };
 
 export default function RootLayout({
@@ -29,9 +35,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${dmSerifDisplay.variable} ${dmSans.variable}`}>
-      <body className="font-sans bg-cream text-stone antialiased">
-        <Nav />
+    <html
+      lang="en"
+      className={`${playfair.variable} ${sourceSans.variable} ${sourceCode.variable}`}
+    >
+      <body className="min-h-screen bg-bg font-body text-text antialiased">
         {children}
       </body>
     </html>
