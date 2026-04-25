@@ -11,7 +11,6 @@
   --color-surface: #faf7f2;
   --color-rule: #d8cdbc;
   --color-paper-shadow: #cbbda9;
-
   --font-display: var(--font-playfair);
   --font-body: var(--font-source-sans);
   --font-mono: var(--font-source-code);
@@ -22,6 +21,34 @@ html {
 }
 
 body {
+  margin: 0;
   background: var(--color-bg);
   color: var(--color-text);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.paper-grain {
+  background-image: radial-gradient(rgba(26, 26, 26, 0.07) 0.7px, transparent 0.7px);
+  background-size: 18px 18px;
+}
+
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

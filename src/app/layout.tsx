@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Source_Sans_3, Source_Code_Pro } from "next/font/google";
+import { Playfair_Display, Source_Code_Pro, Source_Sans_3 } from "next/font/google";
+import { PostHogProvider } from "./providers/posthog";
+import { SentryProvider } from "./providers/sentry";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -25,22 +27,16 @@ const sourceCode = Source_Code_Pro({
 
 export const metadata: Metadata = {
   title: "Design Contract Smoke Test | York Bookbinder",
-  description:
-    "A compact letterpress-inspired site for a fictional independent York bookbinder.",
+  description: "A compact letterpress-inspired site for a fictional independent York bookbinder.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${playfair.variable} ${sourceSans.variable} ${sourceCode.variable}`}
-    >
+    <html lang="en" className={`${playfair.variable} ${sourceSans.variable} ${sourceCode.variable}`}>
       <body className="min-h-screen bg-bg font-body text-text antialiased">
-        {children}
+        <PostHogProvider>
+          <SentryProvider>{children}</SentryProvider>
+        </PostHogProvider>
       </body>
     </html>
   );

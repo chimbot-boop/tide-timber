@@ -1,11 +1,11 @@
-import { SiteHeader } from "@/components/SiteHeader";
+import { ContactSection } from "@/components/ContactSection";
 import { HeroSection } from "@/components/HeroSection";
 import { MaterialBand } from "@/components/MaterialBand";
 import { ServicesSection } from "@/components/ServicesSection";
-import { ContactSection } from "@/components/ContactSection";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
       <SiteHeader />
